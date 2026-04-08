@@ -34,7 +34,7 @@
     <div class="d-flex justify-content-left">
         {{ $datos->links() }} <!-- Agregar paginación -->   
     </div>
-    <a href="{{ route('tasks.create') }}" class="btn btn-crear" justify-text-center>Crear Tarea</a>
+    <a href="{{ route('tasks.create') }}" class="btn btn-crear" justify-text-center>Crear Tarea</a></p>
   
   </div>
 
