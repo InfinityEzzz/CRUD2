@@ -16,6 +16,10 @@
                 <label for="description" class="form-label">Descripción</label>
                 <textarea class="form-control" id="description" name="description" rows="3">{{ $tasks->description }}</textarea>
             </div>
+            <div class="mb-3">
+                <label for="due_date" class="form-label">Fecha de Vencimiento</label>
+                <input type="date" class="form-control" id="due_date" name="due_date" value="{{ $tasks->due_date ? $tasks->due_date->format('Y-m-d') : '' }}">
+            </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="completed" name="completed" {{ $tasks->completed ? 'checked' : '' }}>
                 <label class="form-check-label" for="completed">Completado</label>

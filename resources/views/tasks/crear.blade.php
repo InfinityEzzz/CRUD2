@@ -15,6 +15,10 @@
                 <label for="description" class="form-label">Descripción</label>
                 <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
             </div>
+            <div class="mb-3">
+                <label for="due_date" class="form-label">Fecha de Vencimiento</label>
+                <input type="date" class="form-control" id="due_date" name="due_date" required>
+            </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="completed" name="completed">
                 <label class="form-check-label" for="completed">Completado</label>

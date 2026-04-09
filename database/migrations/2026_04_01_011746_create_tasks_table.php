@@ -13,12 +13,29 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id()->primary_key();
+<<<<<<< HEAD
+            $table->string('tasks_name');
+=======
+<<<<<<< HEAD
+            $table->string('name');
+>>>>>>> 3ead3e5 (Actualizacion)
+            $table->string('description');
+            $table->date('date');
+            $table->tinyInteger('completed')->default(0);
+<<<<<<< HEAD
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('status')->default(1);
+=======
+            $table->foreignId('user_id')->deafult(NULL);
+=======
             $table->string('tasks_name');
             $table->string('description');
             $table->date('date');
             $table->tinyInteger('completed')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('status')->default(1);
+>>>>>>> 0b79563 (Segunda version)
+>>>>>>> 3ead3e5 (Actualizacion)
             $table->timestamps();
         });
     }
