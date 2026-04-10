@@ -45,7 +45,7 @@ class TasksController extends Controller
         $tasks = new tasks(); //crear una nueva instancia del modelo tasks
         $tasks->name = $request->post('name'); //asignar el valor del campo name del formulario al atributo name del modelo 
         $tasks ->description = $request->post('description'); //asignar el valor del campo description del formulario al atributo description del modelo
-        $tasks->due_date = $request->post('due_date'); //asignar el valor del campo due_date del formulario al atributo due_date del modelo
+        $tasks->date = $request->post('date'); //asignar el valor del campo date del formulario al atributo date del modelo
         $tasks->completed = $request->has('completed'); //asignar el valor del campo completed del formulario al atributo completed del modelo
         $tasks->save(); //guardar el modelo en la base de datos   
         
@@ -58,7 +58,7 @@ class TasksController extends Controller
         $tasks = tasks::findOrFail($id); //buscar la tarea por su id, si no se encuentra, lanzar una excepción
         $tasks->name = $request->post('name'); //asignar el valor del campo name del formulario al atributo name del modelo 
         $tasks ->description = $request->post('description'); //asignar el valor del campo description del formulario al atributo description del modelo
-        $tasks->due_date = $request->post('due_date'); //asignar el valor del campo due_date del formulario al atributo due_date del modelo
+        $tasks->date = $request->post('date'); //asignar el valor del campo date del formulario al atributo date del modelo
         $tasks->completed = $request->has('completed'); //asignar el valor del campo completed del formulario al atributo completed del modelo
         $tasks->save(); //guardar el modelo en la base de datos   
         
@@ -73,4 +73,19 @@ class TasksController extends Controller
 
         return redirect()->route('tasks.index')-> with('success', 'Tarea eliminada correctamente'); //redireccionar a la página de inicio
     }
+
+    public function fecha(Request $request)
+    {
+        //mostrar tareas por fecha
+        $datos = $request->query('fecha'); //obtener el valor del parámetro fecha de la URL
+        $tasks = tasks::whereDate('date', $datos)->get(); //buscar las tareas que tienen la fecha de vencimiento igual a la fecha proporcionada
+        return view('tasks.fecha', compact('tasks')); //mostrar la vista fecha con los datos de las tareas encontradas
+    }
+
+    public function filtro()
+    {
+        //mostrar formulario de filtro por fecha
+        return view('tasks.filtro');
+    }
+
 }

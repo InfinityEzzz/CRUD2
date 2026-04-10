@@ -17,7 +17,7 @@
             </div>
             <div class="mb-3">
                 <label for="due_date" class="form-label">Fecha de Vencimiento</label>
-                <input type="date" class="form-control" id="due_date" name="due_date" required>
+                <input type="date" class="form-control" id="date" name="date" required>
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="completed" name="completed">

@@ -22,7 +22,7 @@
                     <td>{{ $tasks->id }}</td>
                     <td>{{ $tasks->name }}</td>
                     <td>{{ $tasks->description }}</td>
-                    <td>{{ $tasks->due_date ? $tasks->due_date->format('Y-m-d') : 'N/A' }}</td>
+                    <td>{{ $tasks->date }}</td>
                     <td>{{ $tasks->completed ? 'Sí' : 'No' }}</td>
                 </tr>
             </tbody>

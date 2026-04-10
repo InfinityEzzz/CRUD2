@@ -18,7 +18,7 @@
             </div>
             <div class="mb-3">
                 <label for="due_date" class="form-label">Fecha de Vencimiento</label>
-                <input type="date" class="form-control" id="due_date" name="due_date" value="{{ $tasks->due_date ? $tasks->due_date->format('Y-m-d') : '' }}">
+                <input type="date" class="form-control" id="date" name="date" value="{{ $tasks->date }}">
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="completed" name="completed" {{ $tasks->completed ? 'checked' : '' }}>
