@@ -24,7 +24,7 @@
                 <label class="form-check-label" for="completed">Completado</label>
             </div>
             <button type="submit" class="btn btn-guardar">Crear</button>
-            <a href="{{ route('tasks.index') }}" class="btn btn-editar">Volver al Listado</a>
+            <a href="{{ route('tasks.index') }}" class="btn btn-primary">Volver al Listado</a>
         </form>
     </div>
 

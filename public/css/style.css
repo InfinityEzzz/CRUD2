@@ -101,19 +101,11 @@ body {
 
 .no-tasks {
     font-size: 20px;
-    color: #4a4e52;
+    color: #ffffff;
     font-style: italic;
 }
 
 /* Botones */
-.btn-borrar {
-    background-color: red;
-    color: white;
-    font-size: 16px;
-    border-radius: 10px;
-    font-weight: bold;
-    padding: 10px 20px;
-}
 
 .btn-editar {
     background-color: orange;
@@ -151,11 +143,11 @@ body {
     font-weight: bold;
     padding: 10px 20px;
 }
-
-.btn-actualizar {
+.btn-primary {
     color: white;
-    background-color: green;
+    background-color: rgb(0, 132, 255);
     font-size: 16px;
+    border: none;
     border-radius: 10px;
     font-weight: bold;
     padding: 10px 20px;

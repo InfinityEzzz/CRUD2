@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 
-@section('tituloTarea', 'Eliminar Tarea')
+@section('tituloPagina', 'Eliminar Tarea')
 
 @section('contenido')
 
@@ -31,8 +31,8 @@
         <form action="{{ route('tasks.destroy', $tasks->id) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-borrar">Eliminar</button>
-            <a href="{{ route('tasks.index') }}" class="btn btn-guardar">Cancelar</a>
+            <button type="submit" class="btn btn-cancelar">Eliminar</button>
+            <a href="{{ route('tasks.index') }}" class="btn btn-primary">Cancelar</a>
         </form>
 
     </div>

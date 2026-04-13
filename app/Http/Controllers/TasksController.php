@@ -10,12 +10,22 @@ class TasksController extends Controller
    
     public function index()
     {
-        //página de inicio
-        $datos = tasks::orderby('id', 'asc')->paginate(5); //obtener todos los datos de la tabla tasks
-        return view('tasks.index', compact('datos')); //enviar los datos a la vista tasks.index
+        $query = tasks::query();
+        $datos = $query->orderBy('id', 'asc')->paginate(5);
+        return view('tasks.index', compact('datos'));
     }
+    
+    public function filtro(Request $request)
+    {
+        $tasks = [];
 
-  
+        if ($request->has('fecha') && $request->fecha != '') {
+            $tasks = Tasks::whereDate('date', $request->fecha)->get();
+        }
+
+        return view('tasks.filtro', compact('tasks'));
+    }
+    
     public function create()
     {
         //crear una nueva tarea
@@ -72,20 +82,6 @@ class TasksController extends Controller
         $tasks->delete(); //eliminar la tarea de la base de datos
 
         return redirect()->route('tasks.index')-> with('success', 'Tarea eliminada correctamente'); //redireccionar a la página de inicio
-    }
-
-    public function fecha(Request $request)
-    {
-        //mostrar tareas por fecha
-        $datos = $request->query('fecha'); //obtener el valor del parámetro fecha de la URL
-        $tasks = tasks::whereDate('date', $datos)->get(); //buscar las tareas que tienen la fecha de vencimiento igual a la fecha proporcionada
-        return view('tasks.fecha', compact('tasks')); //mostrar la vista fecha con los datos de las tareas encontradas
-    }
-
-    public function filtro()
-    {
-        //mostrar formulario de filtro por fecha
-        return view('tasks.filtro');
     }
 
 }
