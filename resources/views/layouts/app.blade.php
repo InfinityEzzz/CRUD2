@@ -30,7 +30,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         
         <div class="container-fluid">
-          <a class="navbar-brand" href="{{ route('tasks.index') }}">CRUD Laravel</a>
+          <a class="navbar-brand" href="{{ route('tasks.index') }}">HOME</a>
           
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,8 +39,33 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" align-items= "left"; style="color: white; font-weight: bold;" aria-current="page" href="{{ route('tasks.filtro') }}">Buscar tareas por fecha</a>
+                <a class="nav-link active" align-items= "left"; style="color: white; font-weight: bold;" aria-current="page" href="{{ route('tasks.filtro') }}">Filtro</a>
               </li>
+
+                @if(auth()->user()->fk_role === 1)
+               <li class="nav-item">
+                <a class="nav-link active" align-items= "left"; style="color: white; font-weight: bold;" aria-current="page" href="{{ route('users.index') }}">Usuarios</a>
+              </li>
+              @endif
+              
+             </ul>  
+          </div>
+
+           <div class="ms-auto user-info">
+              <div class="user-name">
+                  {{ auth()->user()->name }}          
+              </div>
+              <div class="user-role">
+                  @if(auth()->user()->fk_role === 1)
+                    Administrador
+                  @else
+                    Usuario
+                  @endif
+              </div>
+              <form method="GET" action="{{ route('autentication.logout') }}" style="display: inline;">
+                  @csrf
+                  <button type="submit" class="btn-logout">Cerrar Sesión</button>
+              </form>
           </div>
 
       </nav>

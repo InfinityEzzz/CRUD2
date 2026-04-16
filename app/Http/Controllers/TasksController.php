@@ -7,14 +7,17 @@ use Illuminate\Http\Request;
 
 class TasksController extends Controller
 {
-   
     public function index()
     {
         $query = tasks::query();
         $datos = $query->orderBy('id', 'asc')->paginate(5);
-        return view('tasks.index', compact('datos'));
+
+        return view('tasks.index', [
+            'items' => $datos,
+            'tipo' => 'tareas'
+        ]);
     }
-    
+
     public function filtro(Request $request)
     {
         $tasks = [];
@@ -27,27 +30,30 @@ class TasksController extends Controller
     }
     
     public function create()
-    {
-        //crear una nueva tarea
-        return view('tasks.crear'); //mostrar la vista crear
+    {        
+        return view('tasks.crear',[
+            'tipo' => 'task',
+        ]);
     }
    
     public function show($id)
     {
         //mostrar tareas
         $tasks = tasks::findOrFail($id); //buscar la tarea por su id, si no se encuentra, lanzar una excepción
-        return view('tasks.eliminar', compact('tasks')); //mostrar la vista mostrar con los datos de la tarea a mostrar
+        return view('tasks.eliminar',[ 
+        'tasks' => $tasks,
+        'tipo' => 'task',
+        ]); 
     }
-
   
     public function edit($id)
     {
-        //ediar tareas
-        $tasks = tasks::findOrFail($id); //buscar la tarea por su id, si no se encuentra, lanzar una excepción
-        return view('tasks.editar', compact('tasks')); //mostrar la vista editar con los datos de la tarea a editar
-
+       $tasks = tasks::findOrFail($id); //buscar la tarea por su id, si no se encuentra, lanzar una excepción
+        return view('tasks.editar',[ 
+        'tasks' => $tasks,
+        'tipo' => 'task',
+        ]); 
     }
-
 
     public function store(Request $request)
     {
@@ -77,11 +83,12 @@ class TasksController extends Controller
 
     public function destroy($id)
     {
-        //eliminar tareas
         $tasks = tasks::findOrFail($id); //buscar la tarea por su id, si no se encuentra, lanzar una excepción
-        $tasks->delete(); //eliminar la tarea de la base de datos
+        $tasks ->status = 0;
+        $tasks ->save();
 
         return redirect()->route('tasks.index')-> with('success', 'Tarea eliminada correctamente'); //redireccionar a la página de inicio
     }
+
 
 }
