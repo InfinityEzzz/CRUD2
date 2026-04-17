@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
-@section('tituloPagina', 'Editar Tarea/Usuario')
-
 @section('contenido')
 
-    <div class="tasks-container form">
-
         @if($tipo == 'task')
+        <h1 class="h1">Editar Tarea</h1>
+        <div class="tasks-container form">
 
         <form action="{{ route('tasks.update', $tasks->id) }}" method="POST">
             @csrf
@@ -31,7 +29,12 @@
             <a href="{{ route('tasks.index') }}" class="btn btn-cancelar">Cancelar</a>
         </form>
 
+        </div>
+
         @elseif($tipo == 'user')
+        
+        <h1 class="h1">Editar Usuario</h1>
+        <div class="tasks-container form">
 
             <form action="{{ route('users.update', $user->id) }}" method="POST">
                 @csrf
@@ -60,9 +63,8 @@
                 <button type="submit" class="btn btn-guardar">Actualizar</button>
                 <a href="{{ route('tasks.index') }}" class="btn btn-cancelar">Cancelar</a>
             </form>
+          </div>  
 
         @endif
-
-    </div>
 
 @endsection

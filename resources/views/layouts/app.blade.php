@@ -71,7 +71,6 @@
       </nav>
 
       <br>
-      <h1 class="tasks-title">@yield('tituloPagina', 'Listado de Tareas')</h1>
 
       <div class="container mt-4">
         @if($mensaje = Session::get('success'))

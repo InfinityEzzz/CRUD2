@@ -94,7 +94,7 @@ class UserController extends Controller
         $user ->fk_role = $request ->post('role');
         $user->save(); //guardar el modelo en la base de datos   
         
-        return redirect()->route('tasks.index')-> with('success', 'Usuario creado correctamente'); //redireccionar a la página de inicio
+        return redirect()->route('tasks.index', ['tipo' => 'usuarios'])-> with('success', 'Usuario creado correctamente'); //redireccionar a la página de inicio
     }
 
     public function usuarios_show($id)
@@ -120,7 +120,7 @@ class UserController extends Controller
         $user = user::findOrFail($id); 
         $user ->status = 1;
         $user->save();  
-        return redirect()->route('tasks.index')-> with('success', 'Usuario dado de alta correctamente'); 
+        return redirect()->route('tasks.index', ['tipo' => 'usuarios'])-> with('success', 'Usuario dado de alta correctamente'); 
 
     }
 
@@ -133,7 +133,7 @@ class UserController extends Controller
         $user ->fk_role = $request->post('role');
    
         $user->save();  
-        return redirect()->route('tasks.index')-> with('success', 'Usuario actualizado correctamente'); 
+        return redirect()->route('tasks.index', ['tipo' => 'usuarios'])-> with('success', 'Usuario actualizado correctamente'); 
     } 
 
     public function usuarios_destroy($id)

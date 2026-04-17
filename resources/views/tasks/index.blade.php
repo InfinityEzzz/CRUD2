@@ -1,14 +1,14 @@
 @extends('layouts.app')
-
-@section('tituloPagina', 'Inicio')
  
 @section('contenido')
 
+  <!-- ---------------------------------------------------------------- -->
+  @if($tipo == 'tareas')
+  
+  <h1 class="h1">Lista de Tareas</h1>
+
   <div class="tasks-container">
     
-    <!-- ---------------------------------------------------------------- -->
-    @if($tipo == 'tareas')
-
      <table class="table tasks-table" background-color="white">
       <thead>
         <tr>
@@ -55,11 +55,15 @@
 
     @endif
 
+  </div>
 
-
-          <!-- ----------------------------------------------------- -->
+    <!-- ----------------------------------------------------- -->
     @elseif($tipo == 'usuarios')
+  
+    <h1 class="h1">Lista de Usuarios</h1>
 
+    <div class="tasks-container">
+    
     <table class="table tasks-table" background-color="white">
       <thead>
         <tr>
@@ -114,10 +118,10 @@
     @else ($items->isEmpty())
         <p class="no-tasks">Sin datos disponibles.</p>
 
+    </div>
+
     @endif
-    
-    
-  </div>
+        
 
 @endsection
 

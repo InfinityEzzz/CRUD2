@@ -1,8 +1,8 @@
 @extends('layouts.app')
-
-@section('tituloPagina', 'Buscar tareas por fecha')
  
 @section('contenido')
+
+  <h1 class="h1">Buscar tareas por fecha</h1>
 
   <div class="tasks-container">
     <div class= "mb-3">

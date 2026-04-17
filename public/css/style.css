@@ -50,6 +50,11 @@ body {
     transform: translateY(-2px);
 }
 
+.h1 {
+    font-weight: bolder;
+    text-align: center;
+}
+
 /* Contenedor de tareas */
 .tasks-container {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

@@ -1,13 +1,11 @@
 
 @extends('layouts.app')
 
-@section('tituloPagina', 'Dar de baja Tarea/Usuario')
-
 @section('contenido')
 
-    <div class="tasks-container form">
-
     @if($tipo == 'task')
+        <h1 class="h1">Dar de baja Tarea</h1>
+        <div class="tasks-container form">
 
         <table class="table tasks-table" background-color="white">            
             <thead>
@@ -36,8 +34,17 @@
             <button type="submit" class="btn btn-cancelar">Eliminar</button>
             <a href="{{ route('tasks.index') }}" class="btn btn-primary">Cancelar</a>
         </form>
+        </div>
 
     @elseif($tipo == 'user')
+
+        @if($user->status == 1)
+            <h1 class="h1">Dar de baja Usuario</h1>
+        @elseif($user->status == 0)
+            <h1 class="h1">Dar de alta Usuario</h1>
+        @endif
+
+    <div class="tasks-container form">
     
         <table class="table tasks-table" background-color="white">
             <thead>
@@ -77,14 +84,14 @@
             @csrf
             @method('DELETE')
             @if($user->status == 1)
-            <button type="submit" class="btn btn-cancelar">Baja</button>
+            <button type="submit" class="btn btn-guardar">Baja</button>
             @elseif($user->status == 0)
             <button type="submit" class="btn btn-guardar">Alta</button>
             @endif
             <a href="{{ route('tasks.index') }}" class="btn btn-cancelar">Cancelar</a>
         </form>
-
+    </div>
+  
     @endif
 
-    </div>
 @endsection
